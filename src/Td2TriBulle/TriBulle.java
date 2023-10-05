@@ -1,8 +1,8 @@
-package Td2Tri;
+package Td2TriBulle;
 
 import java.util.Scanner;
 
-public class Tri {
+public class TriBulle {
 	
 	//private String ch = "";
 	
@@ -32,20 +32,20 @@ public class Tri {
 		}
 	}
 	
-	public void triRechMin(int[] t, int n) {
-		int minValeur;
-		// int indiceMin = 0;
-		for(int j = 0; j < n; j++) {
-			minValeur = Integer.MAX_VALUE;
-			for(int i = j; i < n; i++) {
-				if(t[i] < minValeur) {
-					// A chaque minimum trouver je dois faire une permutation
-					minValeur = t[i];
-					t[i] = t[j];
-					t[j] = minValeur;					
+	public void triBulle(int[] t, int n) {
+		int tmp;
+		boolean trier = false;
+		while(!trier) { //Equivalent trier == false
+			trier = true;
+			for(int i =0; i < n-1; i++) {
+				if(t[i] > t[i+1]) {
+					tmp = t[i];
+					t[i] = t[i+1];
+					t[i+1] = tmp;
+					// Le tableau n'estr pas encore trier
+					trier = false;
 				}
 			}
 		}
 	}
-
 }

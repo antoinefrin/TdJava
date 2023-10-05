@@ -1,9 +1,9 @@
-package Td2Tri;
+package Td2TriBulle;
 
-public class DemoTri {
+public class DemoTriBulle {
 
 	public static void main(String[] args) {
-		Tri t = new Tri();
+		TriBulle t = new TriBulle();
 		int taille = t.lireTaille();
 		//Instanciation du tableau
 		int[] tab = new int[taille];
@@ -12,7 +12,7 @@ public class DemoTri {
 		t.remplirTableau(tab, taille);
 		System.out.println("Tableau avant tri :");		
 		t.afficherTableau(tab, taille);
-		t.triRechMin(tab, taille);
+		t.triBulle(tab, taille);
 		System.out.println("Tableau apres tri :");		
 		t.afficherTableau(tab, taille);
 	}
