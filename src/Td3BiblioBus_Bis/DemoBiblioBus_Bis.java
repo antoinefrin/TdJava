@@ -1,15 +1,15 @@
-package Td3BiblioBus;
+package Td3BiblioBus_Bis;
 
-public class DemoBiblioBus {
+public class DemoBiblioBus_Bis {
 	
 	public static void main(String[] args) {
 		
-		Livre l1 = new Livre("Notre dame de Paris", " Victor Hugo", " Gallimard", Genre.littératureFrancaise);
-		Livre l2 = new Livre("Les Forges", " Victor ", " Gallimard", Genre.littératureFrancaise);
-		Livre l3 = new Livre("Silence ça pousse", " Stéphane Marie", " Falliard", Genre.Nature);
+		Livre_Bis l1 = new Livre_Bis("Notre dame de Paris", " Victor Hugo", " Gallimard", Genre_Bis.littératureFrancaise);
+		Livre_Bis l2 = new Livre_Bis("Les Forges", " Victor ", " Gallimard", Genre_Bis.littératureFrancaise);
+		Livre_Bis l3 = new Livre_Bis("Silence ça pousse", " Stéphane Marie", " Falliard", Genre_Bis.Nature);
 		
-		BiblioBus b1 = new BiblioBus("Veleda");
-		BiblioBus b2 = new BiblioBus("LIBERTE", 200);
+		BiblioBus_Bis b1 = new BiblioBus_Bis("Veleda");
+		BiblioBus_Bis b2 = new BiblioBus_Bis("LIBERTE", 200);
 		
 		b1.ajoutLivre("Les misérables", "Victor Hugo","Eyrolls");
 		b1.ajoutLivre("Pomme", "Victor Hugo","Lune");
@@ -38,7 +38,7 @@ public class DemoBiblioBus {
 		
 		System.out.println("");
 		System.out.println("****************** Recherche par Genre ***************************************");
-		b1.affficheLivreParGenre(Genre.Non_specifie);
+		b1.affficheLivreParGenre(Genre_Bis.Non_specifie);
 		
 		System.out.println("");
 		System.out.println("****************** Est Connu *************************************************");
