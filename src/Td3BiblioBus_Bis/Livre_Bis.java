@@ -23,11 +23,11 @@ public class Livre_Bis {
 	}
 
 	public String getTitre() {
-		return this.titre;
+		return this.titre.toUpperCase();	//Rajout du toUpperCase TP3-Bis exercice 3
 	}
-	
+
 	public String getAuteur() {
-		return this.auteur;
+		return this.auteur.toUpperCase();	//Rajout du toUpperCase TP3-Bis exercice 3
 	}
 	
 	public String getEditeur() {
@@ -43,7 +43,10 @@ public class Livre_Bis {
 	}
 	
 	public String toString() {
-		return "Livre [titre = "+ titre +", auteur = "+ auteur +", editeur = "+ editeur +", nbExemplaire = "+ nbExemplaire +"]";
+		return "Livre [Titre = "+ titre +
+				", Auteur = "+ auteur +
+				", Editeur = "+ editeur +
+				", NbExemplaire = "+ nbExemplaire +"]";
 	}
 	
 	public void nouvelExemplaire() {
@@ -76,5 +79,16 @@ public class Livre_Bis {
 	public Livre_Bis nouvelEditeur(String newEditeur) {
 		Livre_Bis nouveauLivre = new Livre_Bis(this.titre, this.auteur, newEditeur, this.genre);
 		return nouveauLivre;
+	}
+	
+	///////////////////////////////////////
+	//////// Rajout pour Td3-Bis //////////
+	///////////////////////////////////////
+	public boolean correct(Genre_Bis g)	{
+		for(Genre_Bis e: Genre_Bis.values()) {
+			if(g == e) {
+			}
+		}
+		return true;
 	}
 }

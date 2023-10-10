@@ -1,6 +1,9 @@
 package Td3BiblioBus_Bis;
 
 import java.util.Iterator;
+import java.util.Scanner;
+
+import Td3BiblioBus.Genre;
 
 public class BiblioBus_Bis {
 	private String nom;
@@ -131,5 +134,30 @@ public class BiblioBus_Bis {
 			}
 			limite--;
 		}
+	}
+	
+	///////////////////////////////////////
+	//////// Rajout pour Td3-Bis //////////
+	///////////////////////////////////////
+	public boolean correct(Genre_Bis g)	{
+		for(Genre_Bis e: Genre_Bis.values()) {
+			if(g == e) {
+				return true;
+			}
+		}return false;
+	}
+	
+	///////////////////////////////////////
+	/////////// Td3-Bis Exo 5 /////////////
+	////// Nb Exemplaire par Auteur ///////
+	///////////////////////////////////////
+	public int nbExemplaireAuteur(String auteur) {
+		int nb = 0;
+		for(int i = 0; i < limite; i++) {
+			if(getAuteur(i) == auteur) {
+				nb = nb + getNbExemplaire(i);
+			}
+		}
+		return nb;
 	}
 }

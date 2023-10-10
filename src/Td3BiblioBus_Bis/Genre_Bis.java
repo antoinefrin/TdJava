@@ -4,6 +4,7 @@ public enum Genre_Bis {
 	littératureFrancaise,
 	Jeunnesse,
 	Policier,
-	Nature,
+	BandeDessinee,
+	Doccumentaire,
 	Non_specifie;
 }

@@ -1,15 +1,18 @@
 package Td3BiblioBus_Bis;
 
+import Td2Tri.Tri;
+
 public class DemoBiblioBus_Bis {
 	
 	public static void main(String[] args) {
 		
 		Livre_Bis l1 = new Livre_Bis("Notre dame de Paris", " Victor Hugo", " Gallimard", Genre_Bis.littératureFrancaise);
 		Livre_Bis l2 = new Livre_Bis("Les Forges", " Victor ", " Gallimard", Genre_Bis.littératureFrancaise);
-		Livre_Bis l3 = new Livre_Bis("Silence ça pousse", " Stéphane Marie", " Falliard", Genre_Bis.Nature);
+		Livre_Bis l3 = new Livre_Bis("Silence ça pousse", " Stéphane Marie", " Falliard", Genre_Bis.Non_specifie);
 		
-		BiblioBus_Bis b1 = new BiblioBus_Bis("Veleda");
-		BiblioBus_Bis b2 = new BiblioBus_Bis("LIBERTE", 200);
+		BiblioBus_Bis b1 = new BiblioBus_Bis("Veleda");			
+		BiblioBus_Bis b2 = new BiblioBus_Bis("LIBERTE", 200);	//TP3-Bis exercice 1 utilisation du deuxieme constructeur en
+																//lui donnant la valeur de 200 pour la taille
 		
 		b1.ajoutLivre("Les misérables", "Victor Hugo","Eyrolls");
 		b1.ajoutLivre("Pomme", "Victor Hugo","Lune");
@@ -18,6 +21,12 @@ public class DemoBiblioBus_Bis {
 		b1.ajoutLivre(l1.getTitre(), l1.getAuteur(), l1.getEditeur());
 		b1.ajoutLivre(l2.getTitre(), l2.getAuteur(), l2.getEditeur());
 		b1.ajoutLivre(l3.getTitre(), l3.getAuteur(), l3.getEditeur());
+		
+		///////////////////////////////////////
+		//////// Rajout pour Td3-Bis //////////
+		///////////////////////////////////////
+		System.out.println("Saisir la taille voulu pour BiblioBus : ");
+		//b1.lireTaille();
 		
 		System.out.println("");
 		System.out.println("****************** Affiche le Catalogue **************************************");
@@ -63,5 +72,11 @@ public class DemoBiblioBus_Bis {
 		System.out.println("****************** Sortir Livre **********************************************");
 		b1.sortirLivre2(1);
 		b1.afficheCatalogue();
+		
+		System.out.println("");
+		System.out.println("****************** Compare Genre Correct *************************************");
+		System.out.println(l1.correct(Genre_Bis.Policier));
+		
+		
 	}
 }
