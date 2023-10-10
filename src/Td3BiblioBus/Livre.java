@@ -45,9 +45,7 @@ public class Livre {
 	}
 	
 	public String toString() {
-		//return "Titre : "+ this.titre +", Auteur : "+ this.auteur +", Editeur : "
-			//	+ this.editeur +", Nombre d'exemplaire : "+ this.nbExemplaire +", Genre :"+ genre;
-		return "Livre [titre =" + titre + ",auteur=" + auteur + ",editeur=" + editeur + ",nbExemplaire=" + nbExemplaire + "]";
+		return "Livre [titre = "+ titre +", auteur = "+ auteur +", editeur = "+ editeur +", nbExemplaire = "+ nbExemplaire +"]";
 	}
 	
 	public void nouvelExemplaire() {

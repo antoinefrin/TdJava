@@ -1,7 +1,5 @@
 package Td3BiblioBus;
 
-import java.util.Scanner;
-
 public class DemoLivre {
 
 	public static void main(String[] args) {
@@ -48,5 +46,4 @@ public class DemoLivre {
 		System.out.println(livre1.nouvelEditeur("Banane"));
 		
 	}
-
 }

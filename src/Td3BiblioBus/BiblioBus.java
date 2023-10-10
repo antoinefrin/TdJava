@@ -63,5 +63,73 @@ public class BiblioBus {
 		+". Nombre d'exemplaires : " 
 		+ this.getNbExemplaire(id);
 		System.out.println(ch);
+		//return ch;
+	}
+	
+	public void affficheListLivrePresent() {
+		for(int i = 0; i < limite; i++) {
+			if(catalogue[i].exemplairePresent()) {
+				this.afficheLivre(i);
+			}
+		}		
+	}
+	
+	public void affficheLivreParGenre(Genre g) {
+		for(int i = 0; i < limite; i++) {
+			if(getGenre(i) == g) {
+				this.afficheLivre(i);
+			}
+		}		
+	}
+	
+	public boolean estConnu(Livre l1) {
+		for(int i = 0; i < limite; i++) {
+			if(catalogue[i].equals(l1)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public boolean reellementPresent(int id) {
+		if(catalogue[id].exemplairePresent()) {
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean reellementPresent(Livre l1) {
+		if(l1.exemplairePresent()) {
+			return true;
+		}
+		return false;
+	}
+	
+	public int nombreExemplaire(int id) {
+		return this.getNbExemplaire(id);
+	}
+
+	public int nombreExemplaire(Livre l1) {
+		return l1.getNbExemplaire();
+	}
+	
+	//on ecrase la case d'indice id
+	//avec la derniere case du catalogue
+	public void sortirLivre(int id) {
+		if(id < limite) {
+			catalogue[id] = catalogue[limite-1];
+			limite--;
+		}
+	}
+	
+	/////////////////////////////////////
+	//2eme methode : avec un decalage a gauche
+	public void sortirLivre2(int id) {
+		if(id < limite) {
+			for(int i = id; i <limite-1; i++) {
+				catalogue[i] = catalogue[i+1];
+			}
+			limite--;
+		}
 	}
 }
