@@ -1,56 +1,84 @@
 package Td3BiblioBus;
 
-public class Livre implements TypeGenre{
+import java.util.Scanner;
+
+public class Livre {
 	
 	private String titre;
 	private String auteur;
 	private String editeur;
-	private int nbExemplaire = 0;
+	private int nbExemplaire = 1;
+	Genre genre = Genre.Non_specifie;
+	
 	 
 	public Livre(String titre, String auteur, String editeur) {
 		this.titre = titre;
 		this.auteur = auteur;
 		this.editeur = editeur;		 
 	}
-	 
-	public Livre(String titre, String auteur, String editeur, int nbExemplaire) {
+	
+	public Livre(String titre, String auteur, String editeur, Genre genreA) {
 		this.titre = titre;
 		this.auteur = auteur;
 		this.editeur = editeur;
-		this.nbExemplaire = nbExemplaire;
-	}
-	
-	public String toStringLivre() {
-		return "Titre : "+ this.titre +", Auteur : "+ this.auteur +", Editeur : "
-				+ this.editeur +", Nombre d'exemplaire : "+ this.nbExemplaire +",";
+		this.genre = genreA;
 	}
 
-	public String getLivre() {
-		return (this.titre + this.auteur + this.editeur);
-	}
-	
 	public String getTitre() {
-		return titre;
+		return this.titre;
 	}
-
-	public void setTitre(String titre) {
-		this.titre = titre;
-	}
-
+	
 	public String getAuteur() {
-		return auteur;
+		return this.auteur;
 	}
-
-	public void setAuteur(String auteur) {
-		this.auteur = auteur;
+	
+	public String getEditeur() {
+		return this.editeur;
 	}
 
 	public int getNbExemplaire() {
-		return nbExemplaire;
-	}
-
-	public void setNbExemplaire(int nbExemplaire) {
-		this.nbExemplaire = nbExemplaire;
+		return this.nbExemplaire;
 	}
 	
+	public Genre getGenre() {
+		return genre;
+	}
+	
+	public String toString() {
+		//return "Titre : "+ this.titre +", Auteur : "+ this.auteur +", Editeur : "
+			//	+ this.editeur +", Nombre d'exemplaire : "+ this.nbExemplaire +", Genre :"+ genre;
+		return "Livre [titre =" + titre + ",auteur=" + auteur + ",editeur=" + editeur + ",nbExemplaire=" + nbExemplaire + "]";
+	}
+	
+	public void nouvelExemplaire() {
+		this.nbExemplaire = nbExemplaire + 1;
+	}
+	
+	public void nouvelExemplaire(int nombre) {
+		this.nbExemplaire = nbExemplaire + nombre;
+	}
+	
+	public void perteExemplaire() {
+		if(nbExemplaire > 0) {
+			this.nbExemplaire = nbExemplaire -1;
+		}
+	}
+	
+	public boolean exemplairePresent() {
+		if(nbExemplaire > 0) {
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean equals(Livre l) {
+		if(this.auteur ==l.getAuteur() && this.titre == l.getTitre() && this.editeur == l.editeur) {
+			return true;
+		}
+		return false;
+	}
+	public Livre nouvelEditeur(String newEditeur) {
+		Livre nouveauLivre = new Livre(this.titre, this.auteur, newEditeur, this.genre);
+		return nouveauLivre;
+	}
 }
