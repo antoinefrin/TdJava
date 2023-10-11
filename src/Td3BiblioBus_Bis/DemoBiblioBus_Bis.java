@@ -4,9 +4,10 @@ public class DemoBiblioBus_Bis {
 	
 	public static void main(String[] args) {
 		
-		Livre_Bis l1 = new Livre_Bis("Notre dame de Paris", "Victor Hugo", " Gallimard", Genre_Bis.littératureFrancaise);
-		Livre_Bis l2 = new Livre_Bis("Les Forges", "Victor", " Gallimard", Genre_Bis.littératureFrancaise);
+		Livre_Bis l1 = new Livre_Bis("NOTRE DAME DE PARIS", "VICTOR HUGO", " Gallimard", Genre_Bis.littératureFrancaise);
+		Livre_Bis l2 = new Livre_Bis("LES FORGES", "VICTOR", " Gallimard", Genre_Bis.littératureFrancaise);
 		Livre_Bis l3 = new Livre_Bis("Silence ça pousse", " Stéphane Marie", " Falliard", Genre_Bis.Non_specifie);
+		Livre_Bis l4 = new Livre_Bis("PARIS", "VICTOR HUGO", " Gallimard", Genre_Bis.littératureFrancaise);
 		
 		BiblioBus_Bis b1 = new BiblioBus_Bis("Veleda");			
 		BiblioBus_Bis b2 = new BiblioBus_Bis("LIBERTE", 20);	//TP3-Bis exercice 1 utilisation du deuxieme constructeur en
@@ -19,6 +20,7 @@ public class DemoBiblioBus_Bis {
 		b1.ajoutLivre(l1.getTitre(), l1.getAuteur(), l1.getEditeur());
 		b1.ajoutLivre(l2.getTitre(), l2.getAuteur(), l2.getEditeur());
 		b1.ajoutLivre(l3.getTitre(), l3.getAuteur(), l3.getEditeur());
+		b2.ajoutLivre(l4.getTitre(), l4.getAuteur(), l4.getEditeur());
 		b1.ajoutLivreGenre(l1.getTitre(), l1.getAuteur(), l1.getEditeur(), l1.getGenre());	//Rajout d'une methode qui prend
 																				//en compte la valeur genre pour le td3-bis 
 																				//exercice 5 afin de recuperer le nombre 
@@ -58,7 +60,7 @@ public class DemoBiblioBus_Bis {
 
 		System.out.println("");
 		System.out.println("****************** Recherche par Auteur **************************************");
-		b1.affficheLivreParaAuteur("VICTOR");	//Pour le test mettre la valeurs en majuscule du au toUpperCase mis dans le getAuteur
+		b1.affficheLivreParAuteur("VICTOR");	//Pour le test mettre la valeurs en majuscule du au toUpperCase mis dans le getAuteur
 		
 		System.out.println("");
 		System.out.println("****************** Est Connu *************************************************");
@@ -89,13 +91,28 @@ public class DemoBiblioBus_Bis {
 		System.out.println(l1.correct(Genre_Bis.Policier));
 		
 		System.out.println("");
-		System.out.println("****************** Nb Ewemplaire auteur **************************************");
+		System.out.println("****************** Nb Exemplaire auteur **************************************");
 		System.out.println(b1.nbExemplaireAuteur("VICTOR HUGO"));	//Pour le test mettre la valeurs en majuscule du au toUpperCase mis dans le getAuteur
+		System.out.println("****************** Nb Exemplaire auteur Version Correction *******************");
+		System.out.println(b1.affficheLivreParAuteurVersionCorrection("VICTOR HUGO"));
 		
 		System.out.println("");
-		System.out.println("****************** Nb Ewemplaire genre ***************************************");
+		System.out.println("****************** Nb Exemplaire genre ***************************************");
 		System.out.println(b1.nbExemplaireGenre(Genre_Bis.littératureFrancaise));	//Pour le test mettre la valeurs en majuscule du au toUpperCase mis dans le getAuteur
 	
+		System.out.println("");
+		System.out.println("****************** Affiche Indice par Auteur *********************************");
+		System.out.println(b1.tabIndicePar("VICTOR HUGO"));
+		System.out.println("****************** Affiche Indice par Auteur *********************************");
+		System.out.println(b1.tabIndicePar(Genre_Bis.littératureFrancaise));
 		
+		System.out.println("");
+		System.out.println("****************** Affiche Indice par Auteur *********************************");
+		b1.appartientBiblioBus(l1); //Lors l'ajout "Livre_Bis l1 = new etc" le titre et l'auteur sont saisie en upperCase
+		b1.appartientBiblioBus(l2);
+		b1.appartientBiblioBus(l3);	//Lors l'ajout "Livre_Bis l3 = new etc" le titre et l'auteur NE SONT PAS saisie 
+									//en upperCase mais lors du getTitre et getAuteur ils sont mis en upperCase par
+									//consequent lorsque equals fait la comparaison entre les 2 le retour est false
+		b2.appartientBiblioBus(l4);
 	}
 }

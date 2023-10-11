@@ -71,7 +71,9 @@ public class Livre_Bis {
 	}
 	
 	public boolean equals(Livre_Bis l) {
-		if(this.auteur ==l.getAuteur() && this.titre == l.getTitre() && this.editeur == l.editeur) {
+		if((this.titre.equals(l.titre)) &&
+				(this.auteur.equals(l.auteur)) &&
+				(this.editeur.equals(l.editeur))) {
 			return true;
 		}
 		return false;

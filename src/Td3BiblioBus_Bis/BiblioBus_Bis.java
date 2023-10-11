@@ -1,9 +1,6 @@
 package Td3BiblioBus_Bis;
 
-import java.util.Iterator;
-import java.util.Scanner;
-
-import Td3BiblioBus.Genre;
+import java.util.Vector;
 
 public class BiblioBus_Bis {
 	private String nom;
@@ -121,6 +118,7 @@ public class BiblioBus_Bis {
 		}		
 	}
 	
+	// Cette methode permet d'afficher l'indice 
 	public void affficheLivreParTitre(String t) {
 		for(int i = 0; i < limite; i++) {
 			if(getTitre(i).equals(t)) {
@@ -129,17 +127,28 @@ public class BiblioBus_Bis {
 		}		
 	}
 	
-	public void affficheLivreParaAuteur(String a) {
+	public void affficheLivreParAuteur(String a) {
 		for(int i = 0; i < limite; i++) {
 			if(getAuteur(i).equals(a)) {
 				this.afficheLivre(i);
 			}
-		}		
+		}
 	}
 	
-	public boolean estConnu(Livre_Bis l1) {
+	public int affficheLivreParAuteurVersionCorrection(String a) {
+		int nbr = 0;
 		for(int i = 0; i < limite; i++) {
-			if(catalogue[i].equals(l1)) {
+			if(getAuteur(i).equals(a)) {
+				nbr += getNbExemplaire(i);
+				//this.afficheLivre(i);
+			}
+		}
+		return nbr;
+	}
+	
+	public boolean estConnu(Livre_Bis lv) {
+		for(int i = 0; i < limite; i++) {
+			if(catalogue[i].equals(lv)) {
 				return true;
 			}
 		}
@@ -221,5 +230,33 @@ public class BiblioBus_Bis {
 			}
 		}
 		return nb;
+	}
+
+	public Vector tabIndicePar(String auteur) {
+		Vector v = new Vector();
+		for(int i = 0; i < limite; i++) {
+			if(getAuteur(i).equals(auteur)) {
+				v.add(i);
+			}
+		}
+		return v;
+	}
+	
+	public Vector tabIndicePar(Genre_Bis genre) {
+		Vector v = new Vector();
+		for(int i = 0; i < limite; i++) {
+			if(getGenre(i).equals(genre)) {
+				v.add(i);
+			}
+		}
+		return v;
+	}
+	
+	public void appartientBiblioBus(Livre_Bis lv) {
+		if(estConnu(lv)) {
+			System.out.println("Mon Biblio est : "+ this.nom);
+		}else {
+			System.out.println("N'est pas connu");
+		}
 	}
 }
