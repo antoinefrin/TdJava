@@ -31,6 +31,20 @@ public class BiblioBus_Bis {
 		}
 	}
 	
+	///////////////////////////////////////
+	////// Rajout pour Td3-Bis Exo5 ///////
+	///////////////////////////////////////
+	public void ajoutLivreGenre(String titre, String auteur, String editeur, Genre_Bis genre) {
+		Livre_Bis l = new Livre_Bis(titre, auteur, editeur, genre);
+		
+		if(limite < taille) {
+			catalogue[limite] = l;
+			limite++;
+		}else {
+			System.out.println("Plus de place dans le tableau.");
+		}
+	}
+	
 	public void afficheCatalogue() {
 		for (int i = 0; i < limite; i++) {
 			System.out.println(catalogue[i]);
@@ -80,6 +94,26 @@ public class BiblioBus_Bis {
 	public void affficheLivreParGenre(Genre_Bis g) {
 		for(int i = 0; i < limite; i++) {
 			if(getGenre(i) == g) {
+				this.afficheLivre(i);
+			}
+		}		
+	}
+	
+	public void affficheLivreParTitre(String t) {
+		for(int i = 0; i < limite; i++) {
+			System.out.println("inside for");
+			if(getTitre(i).equals(t)) {
+				System.out.println("inside if");
+				this.afficheLivre(i);
+			}
+		}		
+	}
+	
+	public void affficheLivreParaAuteur(String a) {
+		for(int i = 0; i < limite; i++) {
+			System.out.println("inside for");
+			if(getAuteur(i).equals(a)) {
+				System.out.println("inside if");
 				this.afficheLivre(i);
 			}
 		}		
@@ -154,7 +188,17 @@ public class BiblioBus_Bis {
 	public int nbExemplaireAuteur(String auteur) {
 		int nb = 0;
 		for(int i = 0; i < limite; i++) {
-			if(getAuteur(i) == auteur) {
+			if(getAuteur(i).equals(auteur)) {
+				nb = nb + getNbExemplaire(i);
+			}
+		}
+		return nb;
+	}
+	
+	public int nbExemplaireGenre(Genre_Bis genre) {
+		int nb = 0;
+		for(int i = 0; i < limite; i++) {
+			if(getGenre(i).equals(genre) ) {
 				nb = nb + getNbExemplaire(i);
 			}
 		}
