@@ -7,7 +7,7 @@ import Td3BiblioBus.Genre;
 
 public class BiblioBus_Bis {
 	private String nom;
-	private int taille = 100;
+	private int taille = 200;
 	private int limite = 0;
 	Livre_Bis[] catalogue = new Livre_Bis[taille];
 	
@@ -21,9 +21,31 @@ public class BiblioBus_Bis {
 	}
 	
 	public void ajoutLivre(String titre, String auteur, String editeur) {
-		Livre_Bis l = new Livre_Bis(titre, auteur, editeur);
-		
+		Livre_Bis l = new Livre_Bis(titre.toUpperCase(),
+									auteur.toUpperCase(),
+									editeur);
 		if(limite < taille) {
+			catalogue[limite] = l;
+			limite++;
+		}else {
+			System.out.println("Plus de place dans le tableau.");
+		}
+	}
+	
+	///////////////////////////////////////
+	////// Rajout pour Td3-Bis Exo4 ///////
+	///////////////////////////////////////
+	public void ajoutLivreVersion(String titre, String auteur, String editeur) {
+		Livre_Bis l = new Livre_Bis(titre.toUpperCase(),
+									auteur.toUpperCase(),
+									editeur);
+		if(limite < taille) {
+			for(int i = 0; i < limite; i++) {
+				if(catalogue[i].equals(l)) {
+					catalogue[i].nouvelExemplaire();
+					return;
+				}
+			}
 			catalogue[limite] = l;
 			limite++;
 		}else {
@@ -101,9 +123,7 @@ public class BiblioBus_Bis {
 	
 	public void affficheLivreParTitre(String t) {
 		for(int i = 0; i < limite; i++) {
-			System.out.println("inside for");
 			if(getTitre(i).equals(t)) {
-				System.out.println("inside if");
 				this.afficheLivre(i);
 			}
 		}		
@@ -111,9 +131,7 @@ public class BiblioBus_Bis {
 	
 	public void affficheLivreParaAuteur(String a) {
 		for(int i = 0; i < limite; i++) {
-			System.out.println("inside for");
 			if(getAuteur(i).equals(a)) {
-				System.out.println("inside if");
 				this.afficheLivre(i);
 			}
 		}		

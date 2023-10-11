@@ -9,8 +9,8 @@ public class DemoBiblioBus_Bis {
 		Livre_Bis l3 = new Livre_Bis("Silence ça pousse", " Stéphane Marie", " Falliard", Genre_Bis.Non_specifie);
 		
 		BiblioBus_Bis b1 = new BiblioBus_Bis("Veleda");			
-		BiblioBus_Bis b2 = new BiblioBus_Bis("LIBERTE", 200);	//TP3-Bis exercice 1 utilisation du deuxieme constructeur en
-																//lui donnant la valeur de 200 pour la taille
+		BiblioBus_Bis b2 = new BiblioBus_Bis("LIBERTE", 20);	//TP3-Bis exercice 1 utilisation du deuxieme constructeur en
+																//lui donnant la valeur de 20 pour la taille
 		
 		b1.ajoutLivre("Les miserables", "Victor Hugo","Eyrolls");
 		b1.ajoutLivre("Pomme", "Victor Hugo","Lune");
