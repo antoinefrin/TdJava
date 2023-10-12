@@ -3,10 +3,11 @@ package Td3BiblioBus_Bis;
 import java.util.Vector;
 
 public class BiblioBus_Bis {
+	
 	private String nom;
 	private int taille = 200;
 	private int limite = 0;
-	Livre_Bis[] catalogue = new Livre_Bis[taille];
+	Media_Bis[] catalogue = new Media_Bis[taille];
 	
 	public BiblioBus_Bis(String nom) {
 		this.nom = nom;
@@ -29,9 +30,7 @@ public class BiblioBus_Bis {
 		}
 	}
 	
-	///////////////////////////////////////
 	////// Rajout pour Td3-Bis Exo4 ///////
-	///////////////////////////////////////
 	public void ajoutLivreVersion(String titre, String auteur, String editeur) {
 		Livre_Bis l = new Livre_Bis(titre.toUpperCase(),
 									auteur.toUpperCase(),
@@ -50,9 +49,7 @@ public class BiblioBus_Bis {
 		}
 	}
 	
-	///////////////////////////////////////
 	////// Rajout pour Td3-Bis Exo5 ///////
-	///////////////////////////////////////
 	public void ajoutLivreGenre(String titre, String auteur, String editeur, Genre_Bis genre) {
 		Livre_Bis l = new Livre_Bis(titre, auteur, editeur, genre);
 		
@@ -80,7 +77,7 @@ public class BiblioBus_Bis {
 	}
 	
 	public String getEditeur(int id) {
-		return catalogue[id].getEditeur();
+		return ((Livre_Bis) catalogue[id]).getEditeur();
 	}
 	
 	public int getNbExemplaire(int id) {
@@ -104,7 +101,7 @@ public class BiblioBus_Bis {
 	
 	public void affficheListLivrePresent() {
 		for(int i = 0; i < limite; i++) {
-			if(catalogue[i].exemplairePresent()) {
+			if(((Livre_Bis) catalogue[i]).exemplairePresent()) {
 				this.afficheLivre(i);
 			}
 		}		
@@ -156,7 +153,7 @@ public class BiblioBus_Bis {
 	}
 	
 	public boolean reellementPresent(int id) {
-		if(catalogue[id].exemplairePresent()) {
+		if(((Livre_Bis) catalogue[id]).exemplairePresent()) {
 			return true;
 		}
 		return false;
@@ -197,9 +194,7 @@ public class BiblioBus_Bis {
 		}
 	}
 	
-	///////////////////////////////////////
 	//////// Rajout pour Td3-Bis //////////
-	///////////////////////////////////////
 	public boolean correct(Genre_Bis g)	{
 		for(Genre_Bis e: Genre_Bis.values()) {
 			if(g == e) {
@@ -208,10 +203,8 @@ public class BiblioBus_Bis {
 		}return false;
 	}
 	
-	///////////////////////////////////////
 	/////////// Td3-Bis Exo 5 /////////////
 	////// Nb Exemplaire par Auteur ///////
-	///////////////////////////////////////
 	public int nbExemplaireAuteur(String auteur) {
 		int nb = 0;
 		for(int i = 0; i < limite; i++) {
@@ -225,7 +218,7 @@ public class BiblioBus_Bis {
 	public int nbExemplaireGenre(Genre_Bis genre) {
 		int nb = 0;
 		for(int i = 0; i < limite; i++) {
-			if(getGenre(i).equals(genre) ) {
+			if(getGenre(i)==(genre) ) {
 				nb = nb + getNbExemplaire(i);
 			}
 		}
@@ -245,7 +238,7 @@ public class BiblioBus_Bis {
 	public Vector tabIndicePar(Genre_Bis genre) {
 		Vector v = new Vector();
 		for(int i = 0; i < limite; i++) {
-			if(getGenre(i).equals(genre)) {
+			if(getGenre(i)==(genre)) {
 				v.add(i);
 			}
 		}
@@ -259,4 +252,13 @@ public class BiblioBus_Bis {
 			System.out.println("N'est pas connu");
 		}
 	}
+	
+	public void ajoutDisque(Disque_Bis d) {
+		if(limite < taille) {
+			catalogue[limite] = d;
+			limite++;
+		}else {
+			System.out.println("Plus de place dans le catalogue.");
+		}
+	}	
 }

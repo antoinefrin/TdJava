@@ -114,5 +114,9 @@ public class DemoBiblioBus_Bis {
 									//en upperCase mais lors du getTitre et getAuteur ils sont mis en upperCase par
 									//consequent lorsque equals fait la comparaison entre les 2 le retour est false
 		b2.appartientBiblioBus(l4);
+		
+		System.out.println("");
+		System.out.println("****************** Genre Correct Livre ***************************************");
+		System.out.println(l1.genreCorrectLivre(Genre_Bis.Policier));
 	}
 }
