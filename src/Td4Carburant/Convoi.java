@@ -1,66 +1,36 @@
 package Td4Carburant;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.Vector;
 
-public class Convoi extends Vehicule{
+public class Convoi {
 	
-	protected int taille = 0;
-	protected int limite = 4;
-		
-	List<Vehicule> convoiA = new ArrayList<Vehicule>();
-	List<Vehicule> convoiB = new ArrayList<Vehicule>();
+	private Vector<Vehicule> convoiA = new Vector<Vehicule>();
 	
-	public Convoi(String immatriculation, List convoiA) {
-		super(immatriculation);
-	}
-
-	public List<Vehicule> getConvoiA() {
-		return convoiA;
-	}
+	protected double vitesseMaxConvoi;	
 	
-	public List<Vehicule> getConvoiB() {
-		return convoiB;
-	}
-	
-	private void add() {
-		
+	public void getVitesseMaxConvoi() {
+		double min = Double.MAX_VALUE;
+		for (Vehicule veh : convoiA) {
+			if(veh.getVitesseMax() < min) {
+				min = veh.getVitesseMax();						
+			}
+		}
+		this.vitesseMaxConvoi = min;
+		System.out.println("test" + vitesseMaxConvoi);
 	}
 	
 	@Override
 	public String toString() {
-		return "Convoi [taille=" 
-				+ taille + ", limite=" 
-				+ limite + ", convoiA=" 
-				+ convoiA + ", convoiB="
-				+ convoiB + ", getConvoiA()="
-				+ getConvoiA() + ", getConvoiB()="
-				+ getConvoiB() + "]";
-	}
-	
-	@Override
-	public void afficher() {
-		
-	}
-	
-	public static void main(String[] args) {
-		
-		Convoi c1 = new Convoi("BG-673-LG", 6, convoiA);
-		Convoi c2 = new Convoi("DI-3319-BY", 4600);
-		
-		c1.add();
-		convoiA.add(new vehicule());
-		
-		/*
-		ArrayList<B> array = new ArrayList<B>();
-		//On ajoute du contenu
-		array.add(new B());
-		
-		//On appel la classe A
-		A classe = new A("nom", array);
-		*/
+		String ch = "";
+		for(Vehicule veh : convoiA) {
+			ch += veh.toString();
+			ch +="\n";
+		}
+		return ch + this.vitesseMaxConvoi;
 	}
 
-	
+	public void ajoutVehicule(Vehicule veh) {
+		convoiA.add(veh);
+	}	
 }

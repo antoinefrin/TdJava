@@ -2,29 +2,41 @@ package Td4Carburant;
 
 public class CamionBacher extends Vehicule{
 
-	protected final int POIDAVIDE = 4000;
-	protected final int POIDAMAXIMUM = 20000;
-	protected final int VITESSEMAX = 130;
-	protected int charge = 0;
-	protected int chargeTotal = 0;
+	protected final double POIDAMAXIMUM = 20.0;
+	protected double charge = 0.0;
+	protected double chargeTotal = 0.0;
 	
-	public CamionBacher(String immatriculation) {
-		super(immatriculation);
-	}
-	
-	public CamionBacher(String immatriculation, int charge) {
-		super(immatriculation);
+	public CamionBacher(String immatriculation, double poidsAVide, double charge) {
+		super(immatriculation, poidsAVide);
 		this.charge = charge;
 	}
 	
-	public int getCharge() {
-		return charge;
-	}
-	
-	public int getChargeTotal() {
-		return chargeTotal;
+	@Override
+	public double getVitesseMax() {
+		double vitesse = 0.0;
+		if(charge > POIDAMAXIMUM) {
+			return vitesse;
+		}else {
+			if(this.charge == 0) {
+				vitesse = 130.0;
+			}else {
+				if(this.charge <= 3.0) {
+					vitesse = 110.0;
+				}else {
+					if((this.charge > 3.0) && (this.charge <= 7.0)) {
+						vitesse = 90.0;
+					}else {
+						if ((this.charge > 7.0) && (this.charge <= POIDAMAXIMUM)) {
+							vitesse = 80.0;
+						}
+					}
+				}
+			}
+		}
+		return vitesse ;
 	}
 
+	/*Ce que j'avais fais avant correction
 	public void charge() {
 		if(this.charge == 0) {
 			System.out.println("La charge de "+ super.immatriculation +" est de 0 tonne la vitesse est limité à 130/km");
@@ -38,27 +50,28 @@ public class CamionBacher extends Vehicule{
 			System.out.println("La charge de "+ super.immatriculation +" est supérieur a "+ POIDAMAXIMUM +" Tonnes le camion bâche ne peut pas rouler");
 		}
 	}
-	
-	public int chargeTotal() {
-		return this.chargeTotal = this.charge + POIDAVIDE;
-	}
+	*/
 	
 	@Override
 	public String toString() {
-		return " CamionBacher immatriculation="+ super.immatriculation +" [POIDAVIDE=" 
-				+ POIDAVIDE + ", POIDAMAXIMUM=" 
+		return "CamionBacher immatriculation="+ super.immatriculation +" [POIDAVIDE=" 
+				+ super.poidsAVide + ", POIDAMAXIMUM=" 
 				+ POIDAMAXIMUM + ", VITESSEMAX=" 
-				+ VITESSEMAX
+				+ this.getVitesseMax()
 				+ "]";
 	}
-
+	
 	@Override
 	public void afficher() {
 		System.out.println("Camion Bâcher | L'immatriculation : "
 				+ super.immatriculation +" | Poid à vide : "
-				+ POIDAVIDE +" Tonnes | Charge maximale : "
+				+ super.poidsAVide +" Tonnes | Charge maximale : "
 				+ POIDAMAXIMUM +" Tonnes | Charge du véhicule : "
-				+ this.charge +" Tonne | Charge TOTAL du véhicule : "
-				+ chargeTotal() +" |");
+				+ this.charge +" Tonne |");
 	}
+
+	@Override
+	public double getPoidsTotal() {
+		return super.getPoidsTotal() + this.charge;
+	}	
 }

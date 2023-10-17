@@ -2,30 +2,40 @@ package Td4Carburant;
 
 public class CamoinCiterne extends Vehicule{
 	
+	protected final double POIDAMAXIMUM = 10.0;
+	protected double charge = 0.0;
 	
-	protected final int POIDAVIDE = 3000;
-	protected final int POIDAMAXIMUM = 10000;
-	protected final int VITESSEMAX = 130;
-	protected int charge = 0;
-	protected int chargeTotal = 0;
-	
-	public CamoinCiterne(String immatriculation) {
-		super(immatriculation);
-	}
-	
-	public CamoinCiterne(String immatriculation, int charge) {
-		super(immatriculation);
+	public CamoinCiterne(String immatriculation, double poidsAVide, double charge) {
+		super(immatriculation, poidsAVide);
 		this.charge = charge;
 	}
-
-	public int getCharge() {
-		return charge;
+	
+	@Override
+	public double getVitesseMax() {
+		double vitesse = 0.0;
+		if(charge > POIDAMAXIMUM) {
+			return vitesse;
+		}else {
+			if(this.charge == 0) {
+				vitesse = 130.0;
+			}else {
+				if(this.charge <= 1.0) {
+					vitesse = 110.0;
+				}else {
+					if((this.charge > 1.0) && (this.charge <= 4.0)) {
+						vitesse = 90.0;
+					}else {
+						if ((this.charge > 4.0) && (this.charge <= POIDAMAXIMUM)) {
+							vitesse = 80.0;
+						}
+					}
+				}
+			}
+		}
+		return vitesse ;
 	}
 	
-	public int getChargeTotal() {
-		return chargeTotal;
-	}
-	
+	/*Ce que j'avais fais avant correction
 	public void charge() {
 		if(this.charge == 0) {
 			System.out.println("La charge de "+ super.immatriculation +" est de 0 tonne la vitesse est limité à 130/km");
@@ -39,17 +49,14 @@ public class CamoinCiterne extends Vehicule{
 			System.out.println("La charge de "+ super.immatriculation +" est supérieur a "+ POIDAMAXIMUM +" Tonnes le camion citerne ne peut pas rouler");
 		}
 	}
-	
-	public int chargeTotal() {
-		return this.chargeTotal = this.charge + POIDAVIDE;
-	}
+	*/
 	
 	@Override
 	public String toString() {
-		return " CamoinCiterne immatriculation="+ super.immatriculation +" [POIDAVIDE=" 
-				+ POIDAVIDE + ", POIDAMAXIMUM=" 
+		return "CamoinCiterne immatriculation="+ super.immatriculation +" [POIDAVIDE=" 
+				+ super.poidsAVide + ", POIDAMAXIMUM=" 
 				+ POIDAMAXIMUM + ", VITESSEMAX=" 
-				+ VITESSEMAX
+				+ this.getVitesseMax()
 				+ "]";
 	}
 
@@ -57,9 +64,13 @@ public class CamoinCiterne extends Vehicule{
 	public void afficher() {
 		System.out.println("Camion Citerne | L'immatriculation : "
 				+ super.immatriculation +" | Poid à vide : "
-				+ POIDAVIDE +" Tonnes | Charge maximale : "
+				+ super.poidsAVide +" Tonnes | Charge maximale : "
 				+ POIDAMAXIMUM +" Tonnes | Charge du véhicule : "
-				+ this.charge +" Tonne | Charge TOTAL du véhicule : "
-				+ chargeTotal() +" |");
+				+ this.charge +" Tonne |");
+	}
+
+	@Override
+	public double getPoidsTotal() {
+		return super.getPoidsTotal() + this.charge;
 	}
 }

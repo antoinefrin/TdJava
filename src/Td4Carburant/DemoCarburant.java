@@ -4,75 +4,89 @@ public class DemoCarburant {
 
 	public static void main(String[] args) {
 		
-		PetitBus pb1 = new PetitBus("AD-4.6-GR");
-		
-		
-		CamoinCiterne cc1 = new CamoinCiterne("BG-673-LG");
-														//Poid en KG
-		CamoinCiterne cc2 = new CamoinCiterne("BG-673-LG", 0);
-		CamoinCiterne cc3 = new CamoinCiterne("BG-673-LG", 800);
-		CamoinCiterne cc4 = new CamoinCiterne("BG-673-LG", 3000);
-		CamoinCiterne cc5 = new CamoinCiterne("BG-673-LG", 5000);
-		CamoinCiterne cc6 = new CamoinCiterne("BG-673-LG", 11000);
-		
-		CamionBacher cb1 = new CamionBacher("DI-3319-BY") ;
-														//Poid en KG
-		CamionBacher cb2 = new CamionBacher("DI-3319-BY", 0) ;
-		CamionBacher cb3 = new CamionBacher("DI-3319-BY", 2500) ;
-		CamionBacher cb4 = new CamionBacher("DI-3319-BY", 4600) ;
-		CamionBacher cb5 = new CamionBacher("DI-3319-BY", 8000) ;
-		CamionBacher cb6 = new CamionBacher("DI-3319-BY", 20100) ;
-		
 		System.out.println("************* pb1 *************");
+		PetitBus pb1 = new PetitBus("AD-4.6-GR", 4.0);
+		System.out.println(pb1);
 		pb1.afficher();
 		
 		System.out.println("");
 		System.out.println("************* cc1 *************");
+		CamoinCiterne cc1 = new CamoinCiterne("BG-673-LG", 3.0, 0);
+		System.out.println(cc1);
 		cc1.afficher();
+		System.out.println(cc1.getVitesseMax());
+		
 		System.out.println("");
 		System.out.println("************* cc2 *************");
-		cc2.afficher();		
-		cc2.charge();
+		CamoinCiterne cc2 = new CamoinCiterne("BG-673-LG", 3.0, 0.8);
+		cc2.afficher();
+		System.out.println(cc2.getVitesseMax());
+		
 		System.out.println("");
 		System.out.println("************* cc3 *************");
+		CamoinCiterne cc3 = new CamoinCiterne("BG-673-LG", 3.0, 3.0);
 		cc3.afficher();
-		cc3.charge();
+		System.out.println(cc3.getVitesseMax());
+		
 		System.out.println("");
 		System.out.println("************* cc4 *************");
+		CamoinCiterne cc4 = new CamoinCiterne("BG-673-LG", 3.0, 5.0);
 		cc4.afficher();
-		cc4.charge();
+		System.out.println(cc4.getVitesseMax());
+		
 		System.out.println("");
 		System.out.println("************* cc5 *************");
+		CamoinCiterne cc5 = new CamoinCiterne("BG-673-LG", 3.0, 11.0);
 		cc5.afficher();
-		cc5.charge();
-		System.out.println("");
-		System.out.println("************* cc6 *************");
-		cc6.afficher();
-		cc6.charge();
+		System.out.println(cc5.getVitesseMax());
+		
 		
 		System.out.println("");
 		System.out.println("************* cb1 *************");
+		CamionBacher cb1 = new CamionBacher("DI-3319-BY", 4.0, 0);
 		cb1.afficher();
+		System.out.println(cb1.getVitesseMax());
+		
 		System.out.println("");
 		System.out.println("************* cb2 *************");
-		cc2.afficher();		
-		cb2.charge();
+		CamionBacher cb2 = new CamionBacher("DI-3319-BY", 4.0, 2.5);
+		cc2.afficher();
+		System.out.println(cb2.getVitesseMax());
+		
 		System.out.println("");
 		System.out.println("************* cb3 *************");
+		CamionBacher cb3 = new CamionBacher("DI-3319-BY", 4.0, 4.6);
 		cc3.afficher();
-		cb3.charge();
+		System.out.println(cb3.getVitesseMax());
+		
 		System.out.println("");
 		System.out.println("************* cb4 *************");
+		CamionBacher cb4 = new CamionBacher("DI-3319-BY", 4.0, 8.0);
 		cc4.afficher();
-		cb4.charge();
+		System.out.println(cb4.getVitesseMax());
+		
 		System.out.println("");
 		System.out.println("************* cb5 *************");
+		CamionBacher cb5 = new CamionBacher("DI-3319-BY", 4.0, 20.1);
 		cc5.afficher();
-		cb5.charge();
+		System.out.println(cb5.getVitesseMax());
+				
 		System.out.println("");
-		System.out.println("************* cb6 *************");
-		cc6.afficher();
-		cb6.charge();
+		System.out.println("************* CONVOI *************");
+		Convoi c = new Convoi();
+		System.out.println("************* Début ajout Véhicule *************");
+		c.ajoutVehicule(cb3);
+		c.ajoutVehicule(cc4);
+		c.ajoutVehicule(cb5);
+		c.ajoutVehicule(cc3);
+		c.getVitesseMaxConvoi();
+		System.out.println(c);
+		System.out.println("************* Fin ajout Véhicule *************");
+	
+		
+		System.out.println("************* CONVOI Concommation *************");
+		System.out.println(cc2.consommation(cc2.getVitesseMax(), cc2.getPoidsTotal()));
+		
 	}
 
 }
