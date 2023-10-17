@@ -2,7 +2,7 @@ package Td4Carburant;
 
 public class PetitBus extends Vehicule{
 	
-	protected final int POIDAVIDE = 4;
+	protected final int POIDAVIDE = 4000;
 	protected final int VITESSEMAX = 150;
 	
 	public PetitBus(String immatriculation) {
@@ -11,9 +11,16 @@ public class PetitBus extends Vehicule{
 
 	@Override
 	public String toString() {
-		return super.immatriculation +"PetitBus [POIDAVIDE=" + POIDAVIDE + ", VITESSEMAX=" + VITESSEMAX + "]";
+		return " PetitBus immatriculation="+ super.immatriculation +" [POIDAVIDE=" 
+				+ POIDAVIDE + ", VITESSEMAX=" 
+				+ VITESSEMAX
+				+ "]";
 	}
-	
-	
-	
+
+	@Override
+	public void afficher() {
+		System.out.println("Petit Bus | L'immatriculation : "
+				+ super.immatriculation +" | Poid à vide : "
+				+ POIDAVIDE +" Tonnes | Ne possède pas de charge maximale |" );
+	}
 }
