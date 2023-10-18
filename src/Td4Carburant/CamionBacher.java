@@ -4,7 +4,7 @@ public class CamionBacher extends Vehicule{
 
 	protected final double POIDAMAXIMUM = 20.0;
 	protected double charge = 0.0;
-	protected double chargeTotal = 0.0;
+	//protected double chargeTotal = 0.0;
 	
 	public CamionBacher(String immatriculation, double poidsAVide, double charge) {
 		super(immatriculation, poidsAVide);
@@ -35,7 +35,7 @@ public class CamionBacher extends Vehicule{
 		}
 		return vitesse ;
 	}
-
+	
 	/*Ce que j'avais fais avant correction
 	public void charge() {
 		if(this.charge == 0) {

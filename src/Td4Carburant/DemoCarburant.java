@@ -72,9 +72,9 @@ public class DemoCarburant {
 		System.out.println(cb5.getVitesseMax());
 				
 		System.out.println("");
-		System.out.println("************* CONVOI *************");
-		Convoi c = new Convoi();
+		System.out.println("************* CONVOI *************");		
 		System.out.println("************* Début ajout Véhicule *************");
+		Convoi c = new Convoi();
 		c.ajoutVehicule(cb3);
 		c.ajoutVehicule(cc4);
 		c.ajoutVehicule(cb5);
@@ -83,10 +83,15 @@ public class DemoCarburant {
 		System.out.println(c);
 		System.out.println("************* Fin ajout Véhicule *************");
 	
+		System.out.println("");
+		System.out.println("************* CONVOI Consommation *************");
+		System.out.println("Consommation total du convoi "+ c.consommationConvoi(c.vitesseMaxConvoi));
 		
-		System.out.println("************* CONVOI Concommation *************");
-		System.out.println(cc2.consommation(cc2.getVitesseMax(), cc2.getPoidsTotal()));
-		
+		System.out.println("");
+		System.out.println("************* VEHICULE Consommation *************");
+		System.out.println("Consommation camion citerne "+ cc3.consommation(cc3.getVitesseMax(), cc3.getPoidsTotal()));
+		System.out.println("Consommation camion bâche "+ cb3.consommation(cb3.getVitesseMax(), cb3.getPoidsTotal()));
+		System.out.println("Consommation petit bus "+ pb1.consommation(pb1.getVitesseMax(), pb1.getPoidsTotal()));
 	}
 
 }

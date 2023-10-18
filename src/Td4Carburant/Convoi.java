@@ -9,6 +9,8 @@ public class Convoi {
 	
 	protected double vitesseMaxConvoi;	
 	
+	
+	
 	public void getVitesseMaxConvoi() {
 		double min = Double.MAX_VALUE;
 		for (Vehicule veh : convoiA) {
@@ -17,7 +19,6 @@ public class Convoi {
 			}
 		}
 		this.vitesseMaxConvoi = min;
-		System.out.println("test" + vitesseMaxConvoi);
 	}
 	
 	@Override
@@ -32,5 +33,13 @@ public class Convoi {
 
 	public void ajoutVehicule(Vehicule veh) {
 		convoiA.add(veh);
-	}	
+	}
+	
+	public double consommationConvoi(double vitesseConvoi ) {
+		double consommationTotal = 0.0;
+		for(Vehicule veh : convoiA){
+			consommationTotal += veh.consommation(vitesseConvoi, veh.getPoidsTotal());
+		}
+		return consommationTotal;
+	}
 }
