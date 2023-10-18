@@ -1,19 +1,20 @@
 package Td5Fleuriste;
 
+import java.util.ArrayList;
+
 public class DemoFleuriste {
 
 	public static void main(String[] args) {
+		
+		//Fleur f2 = new Fleur("Lilas", 4, 6);
+		
+		
+		//ArrayList<Fleur> fleur1 = new ArrayList<Fleur>();
+		
+		Fleur f1 = new Fleur("Lilas", 4, 6.1);
+		fleur.add(f1);
+		System.out.println("élément à la position 0: "+fleur.get(0));
 
-		//Fleur fleur = new Fleur(null, 0, 0);
-		
-		Fleur f1 = new Fleur("Rose", 20, 3.1);
-		Fleur f2 = new Fleur("Lilas", 4, 6);
-		//Fleur f3 = new Fleur("Rose", 20);
-		
-		f1.ajoutFleur(f1);
-		f2.ajoutFleur(f2);
-		System.out.println(f1);
-		//fleur.ajoutFleur(f3);
 	}
 
 }
