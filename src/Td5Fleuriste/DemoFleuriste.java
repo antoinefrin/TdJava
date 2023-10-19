@@ -1,20 +1,35 @@
 package Td5Fleuriste;
 
-import java.util.ArrayList;
+import java.util.Vector;
 
 public class DemoFleuriste {
 
 	public static void main(String[] args) {
 		
-		//Fleur f2 = new Fleur("Lilas", 4, 6);
+		Fleurs tulipe = new Fleurs("Tulipe", 5, 30);
+		Fleurs rose = new Fleurs("Rose", 3, 45);
+		Fleurs lilas = new Fleurs("Lilas", 8, 25);
+		Fleuriste fl = new Fleuriste();
 		
+		Vector<Fleurs> vFleur = new Vector<Fleurs>();
 		
-		//ArrayList<Fleur> fleur1 = new ArrayList<Fleur>();
+		vFleur.add(tulipe);
+		vFleur.add(rose);
 		
-		Fleur f1 = new Fleur("Lilas", 4, 6.1);
-		fleur.add(f1);
-		System.out.println("élément à la position 0: "+fleur.get(0));
-
+		fl.setTabFleurs(vFleur);
+		
+		System.out.println("Quantité en stock : "+ fl.quantiteEnStock("Rose"));
+		
+		System.out.println("Prix unitaire : "+ fl.prixDUneFleur("Tulipe"));
+		
+		System.out.println("Prix par type de fleurs : "+ fl.choisirFleurs("Rose", 50));
+		
+		System.out.println("Quantité restante : "+ fl.quantiteEnStock("Rose"));
+		
+		fl.creationBouquet("AAA", "bb");
+		fl.ajouterAuBouquet("Tulipe", 10);
+		fl.ajouterAuBouquet("Rose", 10);
+		System.out.println(fl.getTabBouquet().elementAt(0).getBq().elementAt(0).getNomFleur());
+		
 	}
-
 }
