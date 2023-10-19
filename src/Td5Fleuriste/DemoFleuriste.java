@@ -18,18 +18,20 @@ public class DemoFleuriste {
 		
 		fl.setTabFleurs(vFleur);
 		
-		System.out.println("Quantité en stock : "+ fl.quantiteEnStock("Rose"));
-		
-		System.out.println("Prix unitaire : "+ fl.prixDUneFleur("Tulipe"));
-		
-		System.out.println("Prix par type de fleurs : "+ fl.choisirFleurs("Rose", 50));
-		
-		System.out.println("Quantité restante : "+ fl.quantiteEnStock("Rose"));
-		
 		fl.creationBouquet("AAA", "bb");
 		fl.ajouterAuBouquet("Tulipe", 10);
 		fl.ajouterAuBouquet("Rose", 10);
+		
+		System.out.println("Quantité en stock : "+ fl.quantiteEnStock("Rose"));
+		
+		System.out.println("Prix unitaire : "+ fl.prixDUneFleur("Rose"));
+		
+		System.out.println("Prix par type de fleurs : "+ fl.choisirFleurs("Rose", 5));
+		
+		System.out.println("Quantité restante : "+ fl.quantiteEnStock("Rose"));
+		
 		System.out.println(fl.getTabBouquet().elementAt(0).getBq().elementAt(0).getNomFleur());
 		
+		fl.afficheDetails();
 	}
 }
